@@ -26,7 +26,7 @@ private static final Logger log = Logger.getLogger("EventoRepositoryImpl.class")
 	@Autowired
 	EventoRepository eventoRepository;
 	
-	@GetMapping("/eventos")
+	@GetMapping("/evento/list")
 	public Evento[] listarEventos() {
 		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/LISTAR EVENTOS");
 		List <Evento> eventos = eventoRepository.findAll();

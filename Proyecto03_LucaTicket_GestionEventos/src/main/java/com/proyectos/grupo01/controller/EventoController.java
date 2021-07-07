@@ -34,7 +34,7 @@ public class EventoController {
 	
 	@PostMapping("/save")
 	public ResponseEntity <Evento> addEvento (@RequestBody Evento eventoRequest) {
-		
+		log.info("---- Se ha invocado el microservicio GESTIÓN_EVENTOS/ADD EVENTO");
 		log.infof("Request: ",eventoRequest);
 		
 		Evento evento = eventoRepository.save(eventoRequest);
