@@ -1,5 +1,6 @@
 package com.proyectos.grupo01.controller;
 
+
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,8 @@ import com.proyectos.grupo01.repository.EventoRepository;
 public class EventoController {
 	
 	private static final Logger log = Logger.getLogger("EventoRepositoryImpl.class");
+
+	
 
 	
 	@Autowired
