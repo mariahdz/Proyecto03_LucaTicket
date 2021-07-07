@@ -22,7 +22,7 @@ import lombok.ToString;
 public class Evento {
 	
 	@Id
-	private int id;
+	private String id;
 	private String nombre;
 	private String descripcionCorta;
 	private String descripcionExt;
