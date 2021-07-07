@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import com.proyectos.grupo01.model.Evento;
-import com.proyectos.grupo01.repository.EventoRepository;
+
 
 public class EventoRepositoryImpl implements EventoRepository{
 

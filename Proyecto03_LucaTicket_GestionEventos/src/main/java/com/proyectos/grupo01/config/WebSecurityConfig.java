@@ -8,7 +8,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.proyectos.grupo01.security.JWTAutenticationFilter;
 import com.proyectos.grupo01.security.JWTAuthorizationFilter;
+
+
 
 /*
  * @autor Desiree
@@ -18,7 +21,8 @@ import com.proyectos.grupo01.security.JWTAuthorizationFilter;
 
 @EnableWebSecurity
 @Configuration
-/*public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+/*	public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
@@ -34,26 +38,37 @@ import com.proyectos.grupo01.security.JWTAuthorizationFilter;
 	/*
 	 * Configura el acceso
 	 */
-	    @Override
+		@Override
 	      protected void configure(HttpSecurity http) throws Exception {
 	        http.csrf().disable().authorizeRequests()
 	            .antMatchers("/").permitAll()
-	            .antMatchers(HttpMethod.POST, "/login").permitAll()
-	            .anyRequest().authenticated();
+	            .antMatchers(HttpMethod.POST, "/user").permitAll()
+	            .anyRequest().authenticated()
+	            .and()
+	            // We filter the api/login requests
+	            .addFilterBefore(new JWTAutenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+	            // And filter other requests to check the presence of JWT in header
+            	.addFilterBefore(new JWTAuthorizationFilter(),
+                    UsernamePasswordAuthenticationFilter.class);
 	      }
+
 
 	    
 	    /*
 		 * Se crea una cuenta por defecto
 		 */
-	      @Override
+		@Override
 	      protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	        // Create a default account
 	        auth.inMemoryAuthentication()
 	            .withUser("john")
 	            .password("123")
 	            .roles("ADMIN");
-	      }
+	      
+
 	}
+}
+	
+	
 
 
