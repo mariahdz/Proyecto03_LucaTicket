@@ -37,7 +37,7 @@ public class EventoController {
 		
 		log.infof("Request: ",eventoRequest);
 		
-		Evento evento = (Evento) eventoRepository.save(eventoRequest);
+		Evento evento = eventoRepository.save(eventoRequest);
 		return new ResponseEntity <> (evento, HttpStatus.CREATED);
 		
 	}
