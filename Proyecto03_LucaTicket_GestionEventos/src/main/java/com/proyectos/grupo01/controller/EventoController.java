@@ -14,9 +14,9 @@ import com.proyectos.grupo01.repository.EventoRepository;
 
 
 /**
- * 
+ * Controller
  * @author María Hernández
- * 
+ * @version 07/07/2021/A
  *
  */
 
