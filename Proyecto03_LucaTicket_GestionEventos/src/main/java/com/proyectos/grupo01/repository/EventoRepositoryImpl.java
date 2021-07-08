@@ -1,23 +1,43 @@
 package com.proyectos.grupo01.repository;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+
+import org.jboss.logging.Logger;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Repository;
+
 import com.proyectos.grupo01.model.Evento;
 
 
-public class EventoRepositoryImpl implements EventoRepository{
+public class EventoRepositoryImpl {
 
 	
-	public <S extends Evento> List<S> saveAll(Iterable<S> entities) {
-		// TODO Auto-generated method stub
-		return null;
+	/*private Map<String, Evento> eventos = new HashMap<String, Evento>();
+	private static final Logger log = Logger.getLogger("AccountRepositoryImpl.class");
+	
+	public EventoRepositoryImpl() {
+	
+		Evento evento = new Evento("145-AST", "Antonio Herranz", " ", " ", 2,3," "," ");
+		eventos.put("145-AST", evento);
+	
+		
+		log.info("---- Se ha creado el repositorio EventoRepositoryImpl");
 	}
+*/
 
 	public List<Evento> findAll() {
+		return new ArrayList<Evento>();
+	}
+	
+	
+	public <S extends Evento> List<S> saveAll(Iterable<S> entities) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,34 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.12.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>com.proyectos.grupo01</groupId>
-	<artifactId>Proyecto03_LucaTicket_GestionEventos</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>Proyecto03_LucaTicket_GestionEventos</name>
-	<description>Este es el microservicio que se registra para los eventos</description>
-	<properties>
-		<java.version>11</java.version>
-		<spring-cloud.version>Hoxton.SR11</spring-cloud.version>
-	</properties>
-	<dependencies>
-	
-	<dependency>
-<groupId>org.hibernate.ogm</groupId>
-<artifactId>hibernate-ogm-mongodb</artifactId>
-<version>4.1.0.Beta8</version>
-</dependency>
+<modelVersion>4.0.0</modelVersion>
+<parent>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-parent</artifactId>
+<version>2.3.12.RELEASE</version>
+<relativePath/> <!-- lookup parent from repository -->
+</parent>
+<groupId>com.proyectos.grupo01</groupId>
+<artifactId>Proyecto03_LucaTicket_GestionEventos</artifactId>
+<version>0.0.1-SNAPSHOT</version>
+<name>Proyecto03_LucaTicket_GestionEventos</name>
+<description>Este es el microservicio que se registra para los eventos</description>
+<properties>
+<java.version>11</java.version>
+<spring-cloud.version>Hoxton.SR11</spring-cloud.version>
+</properties>
+<dependencies>
+
+
+
+
+<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-mongodb -->
 <dependency>
-<groupId>org.hibernate.javax.persistence</groupId>
-<artifactId>hibernate-jpa-2.0-api</artifactId>
-<version>1.0.1.Final</version>
+  <groupId>org.springframework.data</groupId>
+  <artifactId>spring-data-mongodb</artifactId>
+  <version>3.1.2</version>
 </dependency>
+
+<!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync -->
+<dependency>
+  <groupId>org.mongodb</groupId>
+  <artifactId>mongodb-driver-sync</artifactId>
+  <version>4.1.1</version>
+</dependency>
+
+
 <dependency>
 <groupId>org.jboss.spec.javax.transaction</groupId>
 <artifactId>jboss-transaction-api_1.1_spec</artifactId>
@@ -43,26 +51,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 
 
 
-<dependency>
-  <groupId>org.mongodb</groupId>
-  <artifactId>mongodb-driver-sync</artifactId>
-  <version>4.1.1</version>
-</dependency>
 
-	
-		<!-- JSON WEB TOKEN -->
-		<!-- https://jwt.io/ -->
-		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt</artifactId>
-			<version>0.9.1</version>
-		</dependency>
-		<!-- https://github.com/stleary/JSON-java -->
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20190722</version>
-		</dependency>
+<!-- https://github.com/stleary/JSON-java -->
+<dependency>
+<groupId>org.json</groupId>
+<artifactId>json</artifactId>
+<version>20190722</version>
+</dependency>
 
 
 
@@ -80,10 +75,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 <groupId>org.springframework.boot</groupId>
 <artifactId>spring-boot-starter-data-mongodb</artifactId>
 </dependency>
-<dependency>
-<groupId>org.springframework.boot</groupId>
-<artifactId>spring-boot-starter-security</artifactId>
-</dependency>
+
 <dependency>
 <groupId>org.springframework.boot</groupId>
 <artifactId>spring-boot-starter-web</artifactId>
@@ -121,11 +113,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 </exclusion>
 </exclusions>
 </dependency>
-<dependency>
-<groupId>org.springframework.security</groupId>
-<artifactId>spring-security-test</artifactId>
-<scope>test</scope>
-</dependency>
+
 </dependencies>
 <dependencyManagement>
 <dependencies>

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.proyectos.grupo01.controller.EventoController;
-import com.proyectos.grupo01.controller.UserController;
+//import com.proyectos.grupo01.controller.UserController;
 import com.proyectos.grupo01.repository.EventoRepository;
 
 @SpringBootTest
@@ -19,8 +19,8 @@ class Proyecto03LucaTicketGestionEventosApplicationTests {
 	@Autowired
 	EventoRepository eventoRepository;
 
-	@Autowired
-	UserController control;
+//	@Autowired
+//	UserController control;
 	
 	@Test
 	void testController() {
@@ -35,10 +35,10 @@ class Proyecto03LucaTicketGestionEventosApplicationTests {
 	}
 	
 	
-	@Test
-	void testControl() {
-		assertThat(control).isNotNull();
-	}
+//	@Test
+//	void testControl() {
+//		assertThat(control).isNotNull();
+//	}
 	
 
 }

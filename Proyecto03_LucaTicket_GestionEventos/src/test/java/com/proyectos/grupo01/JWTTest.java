@@ -17,8 +17,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.proyectos.grupo01.security.JWTAutenticationFilter;
-import com.proyectos.grupo01.security.JWTAuthorizationFilter;
+//import com.proyectos.grupo01.security.JWTAutenticationFilter;
+//import com.proyectos.grupo01.security.JWTAuthorizationFilter;
 		
 /*
  * @autor Desiree
@@ -28,9 +28,9 @@ import com.proyectos.grupo01.security.JWTAuthorizationFilter;
  */
 		
 		
-		@SpringBootTest
-		@AutoConfigureMockMvc
-		public class JWTTest {
+	//	@SpringBootTest
+	//	@AutoConfigureMockMvc
+	/*	public class JWTTest {
 			
 			@MockBean
 			JWTAuthorizationFilter JWT;
@@ -68,8 +68,8 @@ import com.proyectos.grupo01.security.JWTAuthorizationFilter;
 		                .content(body))
 		                .andExpect(status().isForbidden()).andReturn();
 		    }
-
-		}
+*/
+	//	}
 		
 
 
