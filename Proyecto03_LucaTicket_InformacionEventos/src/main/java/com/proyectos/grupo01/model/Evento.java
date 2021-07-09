@@ -1,6 +1,7 @@
 package com.proyectos.grupo01.model;
 
 import java.awt.Image;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -13,13 +14,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+
 @Document(collection = "Eventos")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
-public class Evento {
+public class Evento implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private String id;

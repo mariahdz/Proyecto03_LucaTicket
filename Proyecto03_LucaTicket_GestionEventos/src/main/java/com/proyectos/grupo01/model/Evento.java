@@ -1,6 +1,5 @@
 package com.proyectos.grupo01.model;
 
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
@@ -14,15 +13,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Document(collection = "Eventos")
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
+
 public class Evento implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+
+
+
 	
 	@Id
 	private String id;
