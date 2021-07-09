@@ -47,12 +47,6 @@ public class EventoController {
 		return new ResponseEntity <> (evento, HttpStatus.CREATED);
 		
 	}
-	
-	@GetMapping(value="/list/{id}")
-	public Optional<Evento> encontrarPorId (@PathVariable("id") String id) {
-		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR ID");
-		Optional<Evento> eventoId = eventoRepository.findById(id);
-		return eventoId;
-	}
+
 
 }
