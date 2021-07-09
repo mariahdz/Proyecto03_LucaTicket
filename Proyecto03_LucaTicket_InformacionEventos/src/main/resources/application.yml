@@ -2,7 +2,7 @@
 # Service registers under this name
 spring:
   application:
-    name: accounts-microservice
+    name: informacionEventos-microservice
 
 # Discovery Server Access
 eureka:
