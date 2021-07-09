@@ -58,11 +58,22 @@ public class EventoController  {
 		return eventoRepository.findAll();
 	}
 	
-	@GetMapping(value="/list/{id}")
+	//Encontrar evento por ID
+	@GetMapping(value="/{id}")
 	public Optional<Evento> encontrarPorId (@PathVariable("id") String id) {
 		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR ID");
 		Optional<Evento> eventoId = eventoRepository.findById(id);
 		return eventoId;
+	}
+	
+	
+	//Encontrar evento por género en descripción corta
+	@GetMapping(value="/list/{genero}")
+	public ResponseEntity<List<Evento>> encontrarPorGenero (@PathVariable("descripcionCorta") String genero) {
+		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR GÉNERO MÚSICA");
+		List<Evento> eventos = new ArrayList<Evento>();
+		eventos = eventoRepository.findByGenero(genero);
+		return new ResponseEntity<> (eventos, HttpStatus.OK);
 	}
 	
 	

@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -22,10 +23,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+
 public class Evento implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	
+
+
 	@Id
 	private String id;
 	private String nombre;
@@ -33,11 +36,19 @@ public class Evento implements Serializable{
 	private String descripcionExt;
 	private LocalDate fechaInicio;
 	private LocalDate fechaFin;
-	private LocalTime hora;
+	private LocalDate hora;
 	private int precioPreventa;
 	private int precioNormal;
-	private String recinto;
+	private List recinto;
 	private String politicaAcceso;
-	private Image image;
+	private String image;
 	
+	
+	public List getRecinto(){
+	    return this.recinto;
+	}
+
+	public void setRecinto(List recinto){
+	    this.recinto = recinto;
+	}
 }
