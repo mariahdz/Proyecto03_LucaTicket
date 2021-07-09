@@ -1,6 +1,7 @@
 package com.proyectos.grupo01.model;
 
 import java.awt.Image;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -19,7 +20,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Evento {
+public class Evento implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private String id;

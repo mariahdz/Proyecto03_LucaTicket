@@ -1,21 +1,22 @@
 package com.proyectos.grupo01.controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
+
 import java.util.List;
-import java.util.Optional;
+
+
+
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyectos.grupo01.model.Evento;
@@ -33,7 +34,6 @@ public class EventoController {
 	
 	private static final Logger log = Logger.getLogger("EventoRepositoryImpl.class");
 
-	
 	@Autowired
 	EventoRepository eventoRepository;
 	
@@ -48,5 +48,34 @@ public class EventoController {
 		
 	}
 
+	
+	@GetMapping("/evento/list")
+	public Evento[] listarEventos() {
+		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/LISTAR EVENTOS");
+		System.out.println("error");
+		List <Evento> eventos = eventoRepository.findAll();
+		log.info("---- El microservicio INFORMACIÓN_EVENTOS/LISTAR EVENTOS ha encontrado: " + eventos.size() + " valores");
+		log.error("error");
+		
+		return eventos.toArray(new Evento[eventos.size()]);
+	}
+	
+
+	@GetMapping("/list")
+	public Evento[] listarEventos2() {
+		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/LISTAR EVENTOS");
+		System.out.println("error");
+		List <Evento> eventos = eventoRepository.findAll();
+		log.info("---- El microservicio INFORMACIÓN_EVENTOS/LISTAR EVENTOS ha encontrado: " + eventos.size() + " valores");
+		log.error("error");
+		
+		return eventos.toArray(new Evento[eventos.size()]);
+	}
+	
+	@RequestMapping(path = "/test", method = RequestMethod.GET)
+    public String testEndpoint() {
+		System.out.println("error");
+        return "Hello World!";
+    }
 
 }

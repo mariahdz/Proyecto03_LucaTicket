@@ -1,6 +1,10 @@
 package com.proyectos.grupo01.model;
 
+<<<<<<< Updated upstream
 
+=======
+import java.awt.Image;
+>>>>>>> Stashed changes
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
@@ -20,9 +24,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+<<<<<<< Updated upstream
 public class Evento implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+=======
+public class Evento implements Serializable {
+	
+	private static final long serialVersionUID = 1L; 
+>>>>>>> Stashed changes
 	
 	@Id
 	private String id;
