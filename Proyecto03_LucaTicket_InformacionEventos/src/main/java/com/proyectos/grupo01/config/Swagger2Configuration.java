@@ -21,7 +21,7 @@ import java.util.Collections;
 @Configuration
 public class Swagger2Configuration {
 
-	//http://localhost:2222/swagger-ui.html#
+	//http://localhost:4444/swagger-ui.html#/
 	
 	 @Bean
 	   public Docket productApi() {
