@@ -7,11 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.proyectos.grupo01.controller.EventoController;
-<<<<<<< Updated upstream
-//import com.proyectos.grupo01.controller.UserController;
-=======
 
->>>>>>> Stashed changes
+
+
 import com.proyectos.grupo01.repository.EventoRepository;
 
 @SpringBootTest
@@ -23,11 +21,10 @@ class Proyecto03LucaTicketGestionEventosApplicationTests {
 	@Autowired
 	EventoRepository eventoRepository;
 
-<<<<<<< Updated upstream
-//	@Autowired
-=======
+
+
 	@Autowired
->>>>>>> Stashed changes
+
 //	UserController control;
 	
 	@Test
@@ -42,20 +39,11 @@ class Proyecto03LucaTicketGestionEventosApplicationTests {
 		assertThat(eventoRepository).isNotNull();
 	}
 	
-<<<<<<< Updated upstream
-	
-=======
-//	
->>>>>>> Stashed changes
 //	@Test
 //	void testControl() {
 //		assertThat(control).isNotNull();
 //	}
-<<<<<<< Updated upstream
-	
-=======
-//	
->>>>>>> Stashed changes
+
 
 }
 

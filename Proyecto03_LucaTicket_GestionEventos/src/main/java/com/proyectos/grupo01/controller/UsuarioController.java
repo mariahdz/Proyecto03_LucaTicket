@@ -2,15 +2,7 @@ package com.proyectos.grupo01.controller;
 //
 //import java.util.List;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.proyectos.grupo01.model.User;
-import com.proyectos.grupo01.repository.EventoRepository;
-import com.proyectos.grupo01.repository.UserRepository;
 
 //
 //

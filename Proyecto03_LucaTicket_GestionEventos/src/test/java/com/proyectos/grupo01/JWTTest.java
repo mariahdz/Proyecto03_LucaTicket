@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 package com.proyectos.grupo01;
 
 
@@ -75,7 +75,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 
 
-=======
+
 //package com.proyectos.grupo01;
 //
 //
@@ -152,4 +152,4 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 //
 //
 //
->>>>>>> Stashed changes
+
