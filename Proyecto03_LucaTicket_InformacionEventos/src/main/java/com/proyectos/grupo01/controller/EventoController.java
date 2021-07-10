@@ -9,6 +9,7 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,9 @@ import com.proyectos.grupo01.model.Evento;
 import com.proyectos.grupo01.repository.EventoRepository;
 import com.proyectos.grupo01.services.EventoService;
 
+import com.proyectos.grupo01.services.EventoServiceImpl;
+
+
 /**
  * Controller
  * @author María Hernández
@@ -33,7 +37,6 @@ import com.proyectos.grupo01.services.EventoService;
 @RestController
 
 @RequestMapping("/")
-
 public class EventoController  {
 
 	
@@ -77,6 +80,14 @@ public class EventoController  {
 		eventos = service.findByGenero(descripcionCorta);
 		return new ResponseEntity<> (eventos, HttpStatus.OK);
 	}
+
+//	@GetMapping(value="/list/{genero}")
+//	public ResponseEntity<List<Evento>> encontrarPorGenero (@PathVariable("genero") String genero) {
+//		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR GÉNERO MÚSICA");
+//		List<Evento> eventos = new ArrayList<Evento>();
+//		eventos = service.findByGenero(genero);
+//		return new ResponseEntity<> (eventos, HttpStatus.OK);
+//	}
 	
 	
 	//Encontrar evento por género en descripción corta
@@ -118,7 +129,6 @@ public class EventoController  {
 	public ResponseEntity <Evento> addEvento (@RequestBody Evento eventoRequest) {
 		log.info("---- Se ha invocado el microservicio GESTIÓN_EVENTOS/ADD EVENTO");
 		//log.infof("Request: ",eventoRequest);
-		
 		Evento evento = service.save(eventoRequest);
 		return new ResponseEntity <> (evento, HttpStatus.CREATED);
 		

@@ -14,6 +14,7 @@ import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 
+
 @Configuration
 @EnableMongoRepositories(basePackages="com.proyectos.grupo01.repository")
 public class ApplicationConfig extends AbstractMongoClientConfiguration {

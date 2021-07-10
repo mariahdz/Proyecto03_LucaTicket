@@ -9,7 +9,6 @@ import com.proyectos.grupo01.model.Evento;
 @Repository
 public interface EventoRepository extends MongoRepository <Evento, String> {
 
-	
-	
+
 
 }

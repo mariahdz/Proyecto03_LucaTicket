@@ -17,6 +17,8 @@ import lombok.ToString;
 
 
 
+
+
 /**
  * Clase: Usuario <br>
  * Descripción: Esta clase es el modelo de datos para la administración de usuarios
