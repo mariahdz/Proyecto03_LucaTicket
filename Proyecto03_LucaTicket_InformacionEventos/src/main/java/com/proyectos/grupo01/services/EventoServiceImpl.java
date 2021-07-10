@@ -11,7 +11,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,9 +45,17 @@ public class EventoServiceImpl implements EventoService{
 //	return eventos;
 //	}
 	
-	public List<Evento> findByGenero(String genero) {
+	public List<Evento> findByGenero(String descripcionCorta) {
 		Query query = new Query();
-		query.addCriteria(Criteria.where("descripcionCorta").regex(genero));
+		query.addCriteria(Criteria.where("descripcionCorta").regex(descripcionCorta));
+		List<Evento> eventos = mongo.find(query,Evento.class);
+
+		return eventos;
+		}
+	
+	public List<Evento> findByName(String nombre) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("nonmbre").regex(nombre));
 		List<Evento> eventos = mongo.find(query,Evento.class);
 
 		return eventos;

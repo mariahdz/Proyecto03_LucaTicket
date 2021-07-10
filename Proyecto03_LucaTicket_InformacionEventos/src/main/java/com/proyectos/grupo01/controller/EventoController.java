@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.proyectos.grupo01.model.Evento;
 import com.proyectos.grupo01.repository.EventoRepository;
+import com.proyectos.grupo01.services.EventoService;
 
 /**
  * Controller
@@ -40,13 +42,13 @@ public class EventoController  {
 
 	
 	@Autowired
-	EventoRepository eventoRepository;
+	EventoService service;
 	
 	@GetMapping("/evento/list")
 	public Evento[] listarEventos() {
 		System.out.println("holaaa");
 		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/LISTAR EVENTOS");
-		List <Evento> eventos = eventoRepository.findAll();
+		List <Evento> eventos = service.findAll();
 		log.info("---- El microservicio INFORMACIÓN_EVENTOS/LISTAR EVENTOS ha encontrado: " + eventos.size() + " valores");
 		return eventos.toArray(new Evento[eventos.size()]);
 	}
@@ -55,26 +57,36 @@ public class EventoController  {
 	public Collection <Evento> listarEventos2() {
 		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/LISTAR EVENTOS");
 	
-		return eventoRepository.findAll();
+		return service.findAll();
 	}
 	
 	//Encontrar evento por ID
 	@GetMapping(value="/{id}")
 	public Optional<Evento> encontrarPorId (@PathVariable("id") String id) {
 		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR ID");
-		Optional<Evento> eventoId = eventoRepository.findById(id);
+		Optional<Evento> eventoId = service.findById(id);
 		return eventoId;
 	}
 	
 	
 	//Encontrar evento por género en descripción corta
-	@GetMapping(value="/list/{genero}")
-	public ResponseEntity<List<Evento>> encontrarPorGenero (@PathVariable("descripcionCorta") String genero) {
+	@GetMapping(value="/list/{descripcionCorta}")
+	public ResponseEntity<List<Evento>> encontrarPorGenero (@PathVariable("descripcionCorta") String descripcionCorta) {
 		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR GÉNERO MÚSICA");
 		List<Evento> eventos = new ArrayList<Evento>();
-		eventos = eventoRepository.findByGenero(genero);
+		eventos = service.findByGenero(descripcionCorta);
 		return new ResponseEntity<> (eventos, HttpStatus.OK);
 	}
+	
+	
+	//Encontrar evento por género en descripción corta
+		@GetMapping(value="evento/list/{nombre}")
+		public ResponseEntity<List<Evento>> encontrarPorNombre (@PathVariable("nombre") String nombre) {
+			log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR NOMBRE");
+			List<Evento> eventos = new ArrayList<Evento>();
+			eventos = service.findByName(nombre);
+			return new ResponseEntity<> (eventos, HttpStatus.OK);
+		}
 	
 	
 	@GetMapping("/eventos")
@@ -83,9 +95,9 @@ public class EventoController  {
 			List<Evento> eventos = new ArrayList<Evento>();
 			log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/LISTAR EVENTOS");
 			if (id == null)
-				eventoRepository.findAll().forEach(eventos::add);
+				service.findAll().forEach(eventos::add);
 			else
-				eventoRepository.findAllById(id).forEach(eventos::add);
+				service.findAllById(id).forEach(eventos::add);
 
 			if (eventos.isEmpty()) {
 				log.info("---- El microservicio INFORMACIÓN_EVENTOS/LISTAR EVENTOS ha encontrado: " + eventos.size() + " valores");
@@ -105,9 +117,9 @@ public class EventoController  {
 	@PostMapping("/save")
 	public ResponseEntity <Evento> addEvento (@RequestBody Evento eventoRequest) {
 		log.info("---- Se ha invocado el microservicio GESTIÓN_EVENTOS/ADD EVENTO");
-		log.infof("Request: ",eventoRequest);
+		//log.infof("Request: ",eventoRequest);
 		
-		Evento evento = eventoRepository.save(eventoRequest);
+		Evento evento = service.save(eventoRequest);
 		return new ResponseEntity <> (evento, HttpStatus.CREATED);
 		
 	}
