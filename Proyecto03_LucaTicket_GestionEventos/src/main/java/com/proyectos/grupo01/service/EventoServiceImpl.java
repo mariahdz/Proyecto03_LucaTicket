@@ -1,4 +1,4 @@
-package com.proyectos.grupo01.services;
+package com.proyectos.grupo01.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,67 +14,41 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import com.proyectos.grupo01.model.Evento;
 import com.proyectos.grupo01.repository.EventoRepository;
 
 @Service
 @Transactional
-public class EventoServiceImpl implements EventoService{
-	
+public class EventoServiceImpl implements EventoService {
+
 	@Autowired
 	EventoRepository eventoRepository;
-	
+
 	@Autowired
 	MongoTemplate mongo;
-	
-	
+
 	public List<Evento> findAll() {
 		return eventoRepository.findAll();
 	}
-	
-//	@Override
-//	public Optional<Evento> findByGenero(String genero) {
-//		return eventoRepository.findByGenero(genero);
-//	}
-	
-	
-//	public List<Evento> findByGenero(String genero) {
-//	Query query = new Query();
-//	query.addCriteria(Criteria.where("descripcionCorta").regex(genero));
-//	List<Evento> eventos = mongo.find(query,Evento.class);
-//
-//	return eventos;
-//	}
-	
-	public List<Evento> findByGenero(String descripcionCorta) {
-		Query query = new Query();
-		query.addCriteria(Criteria.where("descripcionCorta").regex(descripcionCorta));
-		List<Evento> eventos = mongo.find(query,Evento.class);
 
-		return eventos;
-		}
-	
-	public List<Evento> findByName(String nombre) {
-		Query query = new Query();
-		query.addCriteria(Criteria.where("nonmbre").regex(nombre));
-		List<Evento> eventos = mongo.find(query,Evento.class);
-
-		return eventos;
-		}
-	
-	
 	public Optional<Evento> findById(String id) {
 		return eventoRepository.findById(id);
 	}
 
-	
-	@Override
 	public boolean existsById(String id) {
 		return eventoRepository.existsById(id);
 	}
-	
-	
+
+	public void deleteById(String id) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("id").is(id));
+		mongo.remove(query, Evento.class);
+	}
+
+	public void updateEvento(Evento evento) {
+		eventoRepository.save(evento);
+	}
+
 	@Override
 	public <S extends Evento> List<S> saveAll(Iterable<S> entities) {
 		// TODO Auto-generated method stub
@@ -123,7 +97,6 @@ public class EventoServiceImpl implements EventoService{
 		return null;
 	}
 
-
 	@Override
 	public Iterable<Evento> findAllById(Iterable<String> ids) {
 		// TODO Auto-generated method stub
@@ -136,24 +109,22 @@ public class EventoServiceImpl implements EventoService{
 		return 0;
 	}
 
-	
-
 	@Override
 	public void delete(Evento entity) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteAll(Iterable<? extends Evento> entities) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteAll() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -179,14 +150,5 @@ public class EventoServiceImpl implements EventoService{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	@Override
-	public void deleteById(String id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	
 
 }
