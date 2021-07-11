@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.proyectos.grupo01.error.EventoNotFoundException;
 import com.proyectos.grupo01.model.Evento;
 import com.proyectos.grupo01.repository.EventoRepository;
 import com.proyectos.grupo01.services.EventoService;
@@ -114,7 +115,7 @@ public class EventoController  {
 	}
 
 	/**
-	 * Metodo para listar eventos por su descripcion corta
+	 * Metodo para listar eventos por su genero
 	 * 
 	 * @param String
 	 * @return ResponseEntity

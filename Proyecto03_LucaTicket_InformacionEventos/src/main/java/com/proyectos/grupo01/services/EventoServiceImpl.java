@@ -57,7 +57,7 @@ public class EventoServiceImpl implements EventoService{
 	
 	public List<Evento> findByName(String nombre) {
 		Query query = new Query();
-		query.addCriteria(Criteria.where("nonmbre").regex(nombre));
+		query.addCriteria(Criteria.where("nombre").regex(nombre));
 		List<Evento> eventos = mongo.find(query,Evento.class);
 
 		return eventos;
