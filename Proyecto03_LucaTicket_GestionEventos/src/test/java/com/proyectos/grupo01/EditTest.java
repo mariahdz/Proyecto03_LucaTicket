@@ -12,17 +12,17 @@ import com.proyectos.grupo01.controller.EventoController;
 import com.proyectos.grupo01.model.Evento;
 
 @SpringBootTest
-class AddTest {
-	
+public class EditTest {
+
 	@MockBean
 	private EventoController control;
 	
 
 	@Test
-	public void whenAddEvento_shouldReturnCREATED() {
+	public void whenEditEvento_shouldReturnOK() {
 	Evento evento = new Evento();
-	control.addEvento(evento);
-	assertThat(ResponseEntity.status(HttpStatus.CREATED));
+	String id = "id";
+	control.editarEvento(evento, id);
+	assertThat(ResponseEntity.status(HttpStatus.OK));
 	}
-	
 }

@@ -1,7 +1,5 @@
 package com.proyectos.grupo01.controller;
 
-
-
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,14 +39,13 @@ public class EventoController {
      * @param eventoRequest
      * @return ResponseEntity
      */
+	
 	@PostMapping("/save")
-	public ResponseEntity <Evento> addEvento (@RequestBody Evento eventoRequest) {
+	public ResponseEntity<Evento> addEvento(@RequestBody Evento eventoRequest) {
 		log.info("---- Se ha invocado el microservicio GESTIÓN_EVENTOS/ADD EVENTO");
-		log.infof("Request: ",eventoRequest);
-		
-		Evento evento = eventoRepository.save(eventoRequest);
-		return new ResponseEntity <> (evento, HttpStatus.CREATED);
-		
+
+		Evento evento = service.save(eventoRequest);
+		return new ResponseEntity<>(evento, HttpStatus.CREATED);
 	}
 
 	
@@ -60,7 +57,7 @@ public class EventoController {
      */
 	@PutMapping("evento/edit/{id}")
 	public ResponseEntity<?> editarEvento(@RequestBody Evento evento, @PathVariable("id") String id) {
-		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/EDITAR");
+		log.info("---- Se ha invocado el microservicio GESTIÓN_EVENTOS/EDITAR");
 		log.info("----Editando evento con ID = " + id);
 		
 		return eventoRepository.findById(id).map(eventoEdit -> {
@@ -95,12 +92,9 @@ public class EventoController {
 
 	@DeleteMapping("evento/delete/{id}")
 	public ResponseEntity<?> eliminarEvento(@PathVariable("id") String id) {
-		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/BORRAR POR ID");
+		log.info("---- Se ha invocado el microservicio GESTIÓN_EVENTOS/BORRAR POR ID");
 		log.info("----El evento con ID = " + id);
 		service.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
-	
-
-
 }

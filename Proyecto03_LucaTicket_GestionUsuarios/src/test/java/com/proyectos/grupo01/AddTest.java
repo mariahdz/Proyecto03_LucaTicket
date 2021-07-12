@@ -8,20 +8,22 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.proyectos.grupo01.controller.EventoController;
-import com.proyectos.grupo01.model.Evento;
+
+import com.proyectos.grupo01.controller.UsuarioController;
+import com.proyectos.grupo01.model.Usuario;
 
 @SpringBootTest
-class AddTest {
+public class AddTest {
+
 	
 	@MockBean
-	private EventoController control;
+	private UsuarioController control;
 	
 
 	@Test
-	public void whenAddEvento_shouldReturnCREATED() {
-	Evento evento = new Evento();
-	control.addEvento(evento);
+	public void whenAddUsuario_shouldReturnCREATED() {
+	Usuario usuario = new Usuario();
+	control.addUsuario(usuario);
 	assertThat(ResponseEntity.status(HttpStatus.CREATED));
 	}
 	
