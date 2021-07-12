@@ -2,7 +2,6 @@ package com.proyectos.grupo01.controller;
 
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
@@ -11,15 +10,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.proyectos.grupo01.error.EventoNotFoundException;
 import com.proyectos.grupo01.model.Evento;
 import com.proyectos.grupo01.services.EventoService;
+
+
+
 
 
 /**
@@ -33,53 +32,15 @@ import com.proyectos.grupo01.services.EventoService;
 @RestController
 
 @RequestMapping("/")
+public class EventoController  {
 
-public class EventoController {
 
 	private static final Logger log = Logger.getLogger("EventoRepositoryImpl.class");
 
 	@Autowired
 	EventoService service;
 
-	/**
-	 * Metodo para listar todos los eventos de la coleccion
-	 * 
-	 * @param
-	 * @return Evento[]
-	 * @author
-	 */
-	@GetMapping("/evento/list")
-	public Evento[] listarEventos() {
-		System.out.println("holaaa");
-		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/LISTAR EVENTOS");
-		List<Evento> eventos = service.findAll();
-		log.info("---- El microservicio INFORMACIÓN_EVENTOS/LISTAR EVENTOS ha encontrado: " + eventos.size()
-				+ " valores");
-		return eventos.toArray(new Evento[eventos.size()]);
-	}
 
-	/**
-	 * Metodo para listar todos los eventos de la coleccion
-	 * 
-	 * @param
-	 * @return Collection <Evento>
-	 * @author
-	 */
-	@GetMapping(value = "/all")
-	public Collection<Evento> listarEventos2() {
-		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/LISTAR EVENTOS");
-
-		return service.findAll();
-	}
-
-	/*
-	 * //Encontrar evento por ID
-	 * 
-	 * @GetMapping(value="/{id}") public Optional<Evento> encontrarPorId
-	 * (@PathVariable("id") String id) { log.
-	 * info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR ID"
-	 * ); Optional<Evento> eventoId = service.findById(id); return eventoId; }
-	 */
 
 	/**
 	 * Metodo para listar un evento por su ID
@@ -96,20 +57,8 @@ public class EventoController {
 	}
 	
 
-	
-	/*//probando codigos de estado
-	@GetMapping("evento/daniela/{id}")
-	public ResponseEntity<?> obtenerUno(@PathVariable String id){
-		Evento result = service.findById(id).orElse(null);
-		if(result == null) {
-			return ResponseEntity.notFound().build();
-		}else {
-			return ResponseEntity.ok(result);
-		}
-	}*/
-
 	/**
-	 * Metodo para listar eventos por su descripcion corta
+	 * Metodo para listar eventos por su genero
 	 * 
 	 * @param String
 	 * @return ResponseEntity
@@ -122,6 +71,8 @@ public class EventoController {
 		eventos = service.findByGenero(descripcionCorta);
 		return new ResponseEntity<>(eventos, HttpStatus.OK);
 	}
+
+
 
 	/**
 	 * Metodo para listar eventos por su nombre
@@ -173,15 +124,6 @@ public class EventoController {
 
 	
 	
-	@PostMapping("/save")
-	public ResponseEntity<Evento> addEvento(@RequestBody Evento eventoRequest) {
-		log.info("---- Se ha invocado el microservicio GESTIÓN_EVENTOS/ADD EVENTO");
-		// log.infof("Request: ",eventoRequest);
-
-		Evento evento = service.save(eventoRequest);
-		return new ResponseEntity<>(evento, HttpStatus.CREATED);
-
-	}
 	
 
 	

@@ -32,6 +32,7 @@ public class Evento implements Serializable{
 	@Id
 	private String id;
 	private String nombre;
+	//private String genero;
 	private String descripcionCorta;
 	private String descripcionExt;
 	private LocalDate fechaInicio;
