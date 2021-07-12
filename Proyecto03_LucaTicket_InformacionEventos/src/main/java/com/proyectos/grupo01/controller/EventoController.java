@@ -1,16 +1,14 @@
 package com.proyectos.grupo01.controller;
 
+
 import java.util.ArrayList;
 import java.util.Collection;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.proyectos.grupo01.error.EventoNotFoundException;
 import com.proyectos.grupo01.model.Evento;
-import com.proyectos.grupo01.repository.EventoRepository;
 import com.proyectos.grupo01.services.EventoService;
-import com.proyectos.grupo01.services.EventoServiceImpl;
+
 
 /**
  * Controller
@@ -91,7 +88,6 @@ public class EventoController {
 	 * @return Evento
 	 * @author
 	 */
-	//Daniela-he añadido excepcion al return
 	@GetMapping(value = "/{id}")
 	public Evento encontrarPorId(@PathVariable("id") String id) {
 		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR ID");
@@ -99,7 +95,9 @@ public class EventoController {
 		return eventoId.orElseThrow(() -> new EventoNotFoundException(id));
 	}
 	
-	//probando codigos de estado
+
+	
+	/*//probando codigos de estado
 	@GetMapping("evento/daniela/{id}")
 	public ResponseEntity<?> obtenerUno(@PathVariable String id){
 		Evento result = service.findById(id).orElse(null);
@@ -108,7 +106,7 @@ public class EventoController {
 		}else {
 			return ResponseEntity.ok(result);
 		}
-	}
+	}*/
 
 	/**
 	 * Metodo para listar eventos por su descripcion corta
@@ -171,7 +169,9 @@ public class EventoController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
 
+	
 	
 	@PostMapping("/save")
 	public ResponseEntity<Evento> addEvento(@RequestBody Evento eventoRequest) {
@@ -182,5 +182,9 @@ public class EventoController {
 		return new ResponseEntity<>(evento, HttpStatus.CREATED);
 
 	}
+	
+
+	
+
 
 }

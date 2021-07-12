@@ -1,11 +1,8 @@
 package com.proyectos.grupo01.controller;
 
 
+
 import java.util.List;
-
-
-
-
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -135,8 +132,6 @@ public class EventoController {
 	
 	
 	
-	
-	
 	@GetMapping("/evento/list")
 	public Evento[] listarEventos() {
 		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/LISTAR EVENTOS");
@@ -165,5 +160,6 @@ public class EventoController {
 		System.out.println("error");
         return "Hello World!";
     }
+	
 
 }
