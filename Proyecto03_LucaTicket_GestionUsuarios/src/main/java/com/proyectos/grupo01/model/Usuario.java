@@ -1,7 +1,7 @@
 package com.proyectos.grupo01.model;
 
 import java.time.LocalDate;
-import java.util.List;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,9 +14,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
-
-
 
 
 /**
@@ -39,10 +36,12 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_usuario;
+	private String user_name;
 	private String nombre;
 	private String apellido;
 	private String mail;
 	private String password;
+	private String token;
 	private LocalDate fecha_alta;
 
 }
