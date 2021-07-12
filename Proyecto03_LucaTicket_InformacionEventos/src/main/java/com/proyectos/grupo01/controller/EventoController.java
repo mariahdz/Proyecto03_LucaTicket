@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.proyectos.grupo01.error.EventoDescripcionNotFoundException;
+import com.proyectos.grupo01.error.EventoNombreNotFoundException;
 import com.proyectos.grupo01.error.EventoNotFoundException;
 import com.proyectos.grupo01.model.Evento;
 import com.proyectos.grupo01.services.EventoService;
@@ -64,11 +67,17 @@ public class EventoController  {
 	 * @return ResponseEntity
 	 * @author
 	 */
+
 	@GetMapping(value = "/list/{descripcionCorta}")
 	public ResponseEntity<List<Evento>> encontrarPorGenero(@PathVariable("descripcionCorta") String descripcionCorta) {
 		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR GÉNERO MÚSICA");
 		List<Evento> eventos = new ArrayList<Evento>();
 		eventos = service.findByGenero(descripcionCorta);
+		
+		if(eventos.isEmpty()) {
+			throw new EventoDescripcionNotFoundException(descripcionCorta);
+		}
+		
 		return new ResponseEntity<>(eventos, HttpStatus.OK);
 	}
 
@@ -86,8 +95,12 @@ public class EventoController  {
 		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR NOMBRE");
 		List<Evento> eventos = new ArrayList<Evento>();
 		eventos = service.findByName(nombre);
+		if(eventos.isEmpty()) {
+			throw new EventoNombreNotFoundException(nombre);
+		}
 		return new ResponseEntity<>(eventos, HttpStatus.OK);
 	}
+	
 
 	/**
 	 * Metodo para listar todos los eventos de la coleccion

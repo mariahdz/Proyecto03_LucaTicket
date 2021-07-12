@@ -24,6 +24,22 @@ public class GlobalControllerAdvice extends ResponseEntityExceptionHandler{
 		ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, exceptionE.getMessage());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
 	}
+	
+	
+	@ExceptionHandler(EventoNombreNotFoundException.class)
+	public ResponseEntity<ApiError>handleEventoNombreNoEncontrado(EventoNombreNotFoundException exceptionE){
+		
+		ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, exceptionE.getMessage());
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
+	}
+	
+	@ExceptionHandler(EventoDescripcionNotFoundException.class)
+	public ResponseEntity<ApiError>handleEventoDescripcionNoEncontrado(EventoDescripcionNotFoundException exceptionE){
+		
+		ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, exceptionE.getMessage());
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
+	}
+	
 
 	@Override
 	protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers,
