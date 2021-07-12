@@ -93,7 +93,8 @@ public class EventoController  {
 	 * 
 	 * @param String
 	 * @return Evento
-	 * @author
+	 * @author Desiree 
+	 * @version 12/07/2021
 	 */
 	//Daniela-he añadido excepcion al return
 	@GetMapping(value = "/{id}")
@@ -161,7 +162,7 @@ public class EventoController  {
 	public ResponseEntity<List<Evento>> encontrarPorNombre(@PathVariable("nombre") String nombre) {
 		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR NOMBRE");
 		List<Evento> eventos = new ArrayList<Evento>();
-		eventos = service.findByName(nombre);
+		eventos = service.findByNameinIgnoreCase(nombre);
 		return new ResponseEntity<>(eventos, HttpStatus.OK);
 	}
 

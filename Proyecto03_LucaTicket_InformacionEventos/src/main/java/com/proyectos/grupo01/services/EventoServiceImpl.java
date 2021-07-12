@@ -55,7 +55,7 @@ public class EventoServiceImpl implements EventoService{
 		return eventos;
 		}
 	
-	public List<Evento> findByName(String nombre) {
+	public List<Evento> findByNameinIgnoreCase(String nombre) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("nombre").regex(nombre));
 		List<Evento> eventos = mongo.find(query,Evento.class);
@@ -184,6 +184,18 @@ public class EventoServiceImpl implements EventoService{
 	public void deleteById(String id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Evento> findByName(String nombre) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Evento> findByNameIgnoreCaseIn(List<String> nombre) {
+		List <Evento> eventos = eventoRepository.findByNameIgnoreCaseIn(nombre);
+		return eventos;
 	}
 
 

@@ -20,12 +20,6 @@ class Proyecto03LucaTicketGestionEventosApplicationTests {
 	
 	@Autowired
 	EventoRepository eventoRepository;
-
-
-
-	@Autowired
-
-//	UserController control;
 	
 	@Test
 	void testController() {
@@ -39,11 +33,6 @@ class Proyecto03LucaTicketGestionEventosApplicationTests {
 		assertThat(eventoRepository).isNotNull();
 	}
 	
-//	@Test
-//	void testControl() {
-//		assertThat(control).isNotNull();
-//	}
-
 
 }
 

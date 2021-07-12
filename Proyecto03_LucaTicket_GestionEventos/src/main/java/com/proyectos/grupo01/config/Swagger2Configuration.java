@@ -1,71 +1,52 @@
-//package com.proyectos.grupo01.config;
-//
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//
+package com.proyectos.grupo01.config;
 
-//import com.google.common.base.Predicate;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-//
-//import springfox.documentation.builders.PathSelectors;
-//import springfox.documentation.builders.RequestHandlerSelectors;
-//import springfox.documentation.service.ApiInfo;
 
-//import springfox.documentation.service.Contact;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
 
-//import springfox.documentation.spi.DocumentationType;
-//import springfox.documentation.spring.web.plugins.Docket;
-//import springfox.documentation.swagger2.annotations.EnableSwagger2;
-//
+import springfox.documentation.service.Contact;
 
-//import java.util.Collections;
-//
-//@EnableSwagger2
-//@Configuration
-//public class Swagger2Configuration {
-//
-//	//http://localhost:2222/swagger-ui.html#
-//	
-//	 @Bean
-//	   public Docket productApi() {
-//	       return new Docket(DocumentationType.SWAGGER_2)
-//	                .select()
-//	                .apis(RequestHandlerSelectors.any())
-//					.paths(PathSelectors.any())
-//					.build()
-//					.apiInfo(getApiInfo());
-//	    }
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-//	 
-//	 private ApiInfo getApiInfo() {
-//			return new ApiInfo(
-//					"Order Service API", 
-//					"Order Service API Description", 
-//					"1.0", "http://lucaticket.es/terms",
-//					new Contact(
-//							"LucaTicket - project", 
-//							"projects", 
-//							"projects@luckaticket.es"), 
-//					"LICENSE", 
-//					"LICENSE URL",
-//					Collections.emptyList());
-//		}
 
-////	 
-////	 private ApiInfo getApiInfo() {
-////			return new ApiInfo(
-////					"Order Service API", 
-////					"Order Service API Description", 
-////					"1.0", "http://lucaticket.es/terms",
-////					new Contact(
-////							"LucaTicket - project", 
-////							"projects", 
-////							"projects@luckaticket.es"), 
-////					"LICENSE", 
-////					"LICENSE URL",
-////					Collections.emptyList());
-////		}
+import java.util.Collections;
 
-//
-//
-//}
+@EnableSwagger2
+@Configuration
+public class Swagger2Configuration {
+
+	//http://localhost:2222/swagger-ui.html#
+	
+	 @Bean
+	   public Docket productApi() {
+       return new Docket(DocumentationType.SWAGGER_2)
+	                .select()
+	                .apis(RequestHandlerSelectors.any())
+					.paths(PathSelectors.any())
+					.build()
+					.apiInfo(getApiInfo());
+	    }
+
+	 
+	 private ApiInfo getApiInfo() {
+			return new ApiInfo(
+					"Order Service API", 
+					"Order Service API Description", 
+					"1.0", "http://lucaticket.es/terms",
+					new Contact(
+							"LucaTicket - project", 
+							"projects", 
+							"projects@luckaticket.es"), 
+					"LICENSE", 
+					"LICENSE URL",
+					Collections.emptyList());
+		}
+
+
+}
