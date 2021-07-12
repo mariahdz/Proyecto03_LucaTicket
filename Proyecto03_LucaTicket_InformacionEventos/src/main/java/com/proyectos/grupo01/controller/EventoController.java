@@ -1,6 +1,5 @@
 package com.proyectos.grupo01.controller;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,15 +17,10 @@ import com.proyectos.grupo01.model.Evento;
 import com.proyectos.grupo01.services.EventoService;
 
 
-
-
-
 /**
  * Controller
- * 
  * @author María Hernández
  * @version 07/07/2021/A
- *
  */
 
 @RestController
@@ -51,11 +45,10 @@ public class EventoController  {
 	 */
 	@GetMapping(value = "/{id}")
 	public Evento encontrarPorId(@PathVariable("id") String id) {
-		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR ID");
+		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTRAR POR ID");
 		Optional<Evento> eventoId = service.findById(id);
 		return eventoId.orElseThrow(() -> new EventoNotFoundException(id));
 	}
-	
 
 	/**
 	 * Metodo para listar eventos por su genero
@@ -81,7 +74,7 @@ public class EventoController  {
 	 * @return Evento[]
 	 * @author
 	 */
-	@GetMapping(value = "evento/list/{nombre}")
+	@GetMapping(value = "/list/{nombre}")
 	public ResponseEntity<List<Evento>> encontrarPorNombre(@PathVariable("nombre") String nombre) {
 		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR NOMBRE");
 		List<Evento> eventos = new ArrayList<Evento>();
@@ -90,8 +83,7 @@ public class EventoController  {
 	}
 
 	/**
-	 * Metodo para listar todos los eventos de la coleccion
-	 * 
+	 * Metodo para listar todos los eventos de la colección
 	 * @param
 	 * @return ResponseEntity
 	 * @author
@@ -121,12 +113,4 @@ public class EventoController  {
 		}
 	}
 	
-
-	
-	
-	
-
-	
-
-
 }

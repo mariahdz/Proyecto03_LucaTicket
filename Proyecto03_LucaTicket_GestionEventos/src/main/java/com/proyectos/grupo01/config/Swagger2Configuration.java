@@ -1,4 +1,3 @@
-
 package com.proyectos.grupo01.config;
 
 import org.springframework.context.annotation.Bean;
@@ -19,15 +18,16 @@ import java.util.Collections;
 @Configuration
 public class Swagger2Configuration {
 
-	//http://localhost:2222/swagger-ui.html#
+	//http://localhost:2222/swagger-ui.html#/
 	
 	 @Bean
 	   public Docket productApi() {
 	       return new Docket(DocumentationType.SWAGGER_2)
 	                .select()
-	                .apis(RequestHandlerSelectors.any())					.paths(PathSelectors.any())
+	                .apis(RequestHandlerSelectors.any())
+					.paths(PathSelectors.any())
 					.build()
-					.apiInfo(getApiInfo());
+				.apiInfo(getApiInfo());
 	    }
 	 
 	 private ApiInfo getApiInfo() {
@@ -35,14 +35,14 @@ public class Swagger2Configuration {
 					"Order Service API", 
 					"Order Service API Description", 
 					"1.0", "http://lucaticket.es/terms",
-					new Contact(
+
+				new Contact(
 							"LucaTicket - project", 
 							"projects", 
-						"projects@luckaticket.es"), 
-				"LICENSE", 
+							"projects@luckaticket.es"), 
+					"LICENSE", 
 					"LICENSE URL",
 					Collections.emptyList());
 	}
-
 
 }

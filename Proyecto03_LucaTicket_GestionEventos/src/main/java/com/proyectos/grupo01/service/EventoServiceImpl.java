@@ -93,8 +93,7 @@ public class EventoServiceImpl implements EventoService {
 
 	@Override
 	public <S extends Evento> S save(S entity) {
-		// TODO Auto-generated method stub
-		return null;
+		return eventoRepository.save(entity);
 	}
 
 	@Override
