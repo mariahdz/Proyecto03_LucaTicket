@@ -63,15 +63,6 @@ class ListTest {
 		assertThat(service.findById(String.valueOf(1)).isPresent());
 	}
 	
-	/*
-	 * Prueba el método findById
-	 */
-	@Test
-	void testFindById() {
-		Optional<Evento> evento = Optional.of(new Evento());
-		when(service.findById(String.valueOf(1))).thenReturn(evento);
-		assertThat(service.findById(String.valueOf(1)).isPresent());
-	}
 	
 	/*
 	 * Prueba el método findByGenero

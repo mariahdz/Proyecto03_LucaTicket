@@ -17,6 +17,6 @@ public interface EventoService extends EventoRepository {
 	public Optional<Evento> findById(String id);
 	public boolean existsById(String id);
 	public List<Evento> findByNameinIgnoreCase(String nombre);
-	
+
 
 }

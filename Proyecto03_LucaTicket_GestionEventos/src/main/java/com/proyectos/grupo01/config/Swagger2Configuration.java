@@ -8,6 +8,7 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 
+
 import springfox.documentation.service.Contact;
 
 import springfox.documentation.spi.DocumentationType;
@@ -21,32 +22,43 @@ import java.util.Collections;
 @Configuration
 public class Swagger2Configuration {
 
-	//http://localhost:2222/swagger-ui.html#
+
+
+	//http://localhost:2222/swagger-ui.html#/
 	
 	 @Bean
 	   public Docket productApi() {
-       return new Docket(DocumentationType.SWAGGER_2)
+	       return new Docket(DocumentationType.SWAGGER_2)
+
 	                .select()
 	                .apis(RequestHandlerSelectors.any())
 					.paths(PathSelectors.any())
 					.build()
+
 					.apiInfo(getApiInfo());
 	    }
 
-	 
+
 	 private ApiInfo getApiInfo() {
 			return new ApiInfo(
 					"Order Service API", 
 					"Order Service API Description", 
 					"1.0", "http://lucaticket.es/terms",
-					new Contact(
+
+	
+				new Contact(
+
 							"LucaTicket - project", 
 							"projects", 
 							"projects@luckaticket.es"), 
 					"LICENSE", 
 					"LICENSE URL",
 					Collections.emptyList());
+
 		}
 
 
-}
+	}
+
+
+
