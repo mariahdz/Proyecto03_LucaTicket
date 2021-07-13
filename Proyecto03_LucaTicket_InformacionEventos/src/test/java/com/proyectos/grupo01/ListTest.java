@@ -82,8 +82,8 @@ class ListTest {
 	void testFindByNombre() {
 		
 		Evento evento = new Evento();
-		when(service.findByNameinIgnoreCase("Resurrection")).thenReturn(Collections.singletonList(evento));
-		assertThat(service.findByNameinIgnoreCase("Resurrection").size()).isEqualTo(1);
+		when(service.findByName("Resurrection")).thenReturn(Collections.singletonList(evento));
+		assertThat(service.findByName("Resurrection").size()).isEqualTo(1);
 	}
 	
 }

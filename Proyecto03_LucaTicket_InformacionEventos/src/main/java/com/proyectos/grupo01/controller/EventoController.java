@@ -89,7 +89,7 @@ public class EventoController  {
 		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR NOMBRE");
 		List<Evento> eventos = new ArrayList<Evento>();
 
-		eventos = service.findByNameinIgnoreCase(nombre);
+		eventos = service.findByName(nombre);
 		
 		if(eventos.isEmpty()) {
 			throw new EventoNombreNotFoundException(nombre);
