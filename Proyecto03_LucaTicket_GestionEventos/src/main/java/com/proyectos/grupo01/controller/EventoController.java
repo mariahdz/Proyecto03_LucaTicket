@@ -35,9 +35,10 @@ public class EventoController {
 	
 	
 	 /**
-     * Metodo para CREAR un nuevo evento
+     * Método para CREAR un nuevo evento
      * @param eventoRequest
      * @return ResponseEntity
+     * @author María Hernández
      */
 	
 	@PostMapping("/save")
@@ -50,7 +51,7 @@ public class EventoController {
 
 	
 	 /**
-     * Metodo para EDITAR un evento segun su ID
+     * Método para EDITAR un evento según su ID
      * @param evento, id
      * @return Evento
      * @author Daniela Posas
@@ -84,7 +85,7 @@ public class EventoController {
 	
 	
 	 /**
-     * Metodo para ELIMINAR un evento por su ID
+     * Método para ELIMINAR un evento por su ID
      * @param id
      * @return Evento
      * @author Daniela Posas

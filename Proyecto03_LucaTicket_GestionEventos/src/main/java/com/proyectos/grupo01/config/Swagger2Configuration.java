@@ -18,6 +18,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Collections;
 
+/**
+ * Swagger 2 Cofiguration
+ * @author María Hernández
+ * @version 09/07/2021/A
+ *
+ */
 @EnableSwagger2
 @Configuration
 public class Swagger2Configuration {

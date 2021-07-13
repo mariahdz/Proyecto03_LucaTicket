@@ -16,7 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.proyectos.grupo01.model.Evento;
 import com.proyectos.grupo01.repository.EventoRepository;
-
+/**
+ * Evento Service Implementación
+ * @author Daniela Posas
+ * @version 09/07/2021/A
+ *
+ */
 @Service
 @Transactional
 public class EventoServiceImpl implements EventoService {

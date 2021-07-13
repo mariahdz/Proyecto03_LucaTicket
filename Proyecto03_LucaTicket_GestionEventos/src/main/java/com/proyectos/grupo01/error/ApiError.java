@@ -1,7 +1,5 @@
 package com.proyectos.grupo01.error;
 
-
-
 import java.time.LocalDateTime;
 
 import org.springframework.http.HttpStatus;
@@ -15,6 +13,12 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Api Error
+ * @author Daniela Posas
+ * @version 12/07/2021/A
+ *
+ */
 @Getter
 @Setter
 @RequiredArgsConstructor

@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-
+/**
+ * Global Controller Advice
+ * @author Daniela Posas
+ * @version 12/07/2021/A
+ *
+ */
 @RestControllerAdvice
 public class GlobalControllerAdvice extends ResponseEntityExceptionHandler{
 

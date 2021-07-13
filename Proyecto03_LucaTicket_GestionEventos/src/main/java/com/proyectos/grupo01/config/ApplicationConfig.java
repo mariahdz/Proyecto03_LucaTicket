@@ -14,7 +14,12 @@ import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 
-
+/**
+ * Application Config
+ * @author María Hernández
+ * @version 09/07/2021/A
+ *
+ */
 @Configuration
 @EnableMongoRepositories(basePackages="com.proyectos.grupo01.repository")
 public class ApplicationConfig extends AbstractMongoClientConfiguration {
