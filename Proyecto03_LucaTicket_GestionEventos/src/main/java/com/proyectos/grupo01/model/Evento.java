@@ -13,7 +13,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
+/**
+ * Model Evento
+ * @author María Hernández
+ * @version 07/07/2021/A
+ *
+ */
 @Document(collection = "Eventos")
 @AllArgsConstructor
 @NoArgsConstructor

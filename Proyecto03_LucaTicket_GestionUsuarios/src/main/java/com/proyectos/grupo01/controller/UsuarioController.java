@@ -13,9 +13,6 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import java.util.Optional;
 
 import org.jboss.logging.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +27,11 @@ import com.proyectos.grupo01.service.UsuarioServiceImpl;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-
+/**
+ * Usuario Controller <br>
+ * @author Desiree
+ * @version 09/07/2021/A
+ */
 @RestController
 public class UsuarioController {
 	
@@ -45,6 +46,7 @@ public class UsuarioController {
 	 * Método para añadir un nuevo usuario a la base de datos
 	 * @param usuarioRequest
 	 * @return
+	 * @author Desiree
 	 */
 		@PostMapping("/save")
 		public ResponseEntity <Usuario> addUsuario (@RequestBody Usuario usuarioRequest) {
@@ -94,7 +96,8 @@ public class UsuarioController {
 		/**
 		 * Método para encontrar un usuario por su ID
 		 * @param id
-		 * @return
+		 * @return usuario
+		 * @author Desiree
 		 */
 		@GetMapping(value = "/{id}")
 		public Optional <Usuario> encontrarPorId(@PathVariable("id") int id) {
