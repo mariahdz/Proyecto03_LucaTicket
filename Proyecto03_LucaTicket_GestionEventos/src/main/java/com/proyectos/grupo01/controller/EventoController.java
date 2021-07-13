@@ -95,7 +95,8 @@ public class EventoController {
 	public ResponseEntity<?> eliminarEvento(@PathVariable("id") String id) {
 		log.info("---- Se ha invocado el microservicio GESTIÓN_EVENTOS/BORRAR POR ID");
 		log.info("----El evento con ID = " + id);
+		int i; //para encontrar ventas
 		service.deleteById(id);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.noContent().build();//comentario para encontrar sistema ventas
 	}
 }
