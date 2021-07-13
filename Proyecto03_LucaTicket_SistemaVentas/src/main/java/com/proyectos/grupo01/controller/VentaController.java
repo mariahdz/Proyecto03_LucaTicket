@@ -8,11 +8,10 @@ import com.proyectos.grupo01.model.Evento;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.client.RestTemplate;
 
-import com.proyectos.grupo01.model.Evento;
+
 import com.proyectos.grupo01.model.Usuario;
 import com.proyectos.grupo01.model.Venta;
 
