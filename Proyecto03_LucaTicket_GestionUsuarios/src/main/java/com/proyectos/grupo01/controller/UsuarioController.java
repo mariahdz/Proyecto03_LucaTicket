@@ -96,12 +96,12 @@ public class UsuarioController {
 		 * @param id
 		 * @return
 		 */
-	/*	@GetMapping(value = "/{id}")
-		public Usuario encontrarPorId(@PathVariable("id") String id) {
+		@GetMapping(value = "/{id}")
+		public Optional <Usuario> encontrarPorId(@PathVariable("id") int id) {
 			log.info("---- Se ha invocado el microservicio GESTIÓN_USUARIOS/ENCONTRAR POR ID");
-			Optional<Usuario> usuarioId = repo.findById(id);
-			return usuarioId.orElseThrow(() -> new EventoNotFoundException(id));
+			Optional<Usuario> usuarioId = service.findById(id);
+			return usuarioId;
 		}
-*/
+
 
 }

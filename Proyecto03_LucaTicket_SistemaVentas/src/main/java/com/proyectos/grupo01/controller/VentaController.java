@@ -2,6 +2,7 @@ package com.proyectos.grupo01.controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.proyectos.grupo01.model.Evento;
 
@@ -15,6 +16,7 @@ import com.proyectos.grupo01.model.Evento;
 import com.proyectos.grupo01.model.Usuario;
 import com.proyectos.grupo01.model.Venta;
 
+@RestController
 public class VentaController {
 	
 	/*PostMapping("/venta")
@@ -38,14 +40,19 @@ public class VentaController {
 		}
 	
 	@PostMapping("/venta")
-	public boolean comprobarVenta (RequestParam String, String nombreEvento, String id) {
+	public boolean comprobarVenta (@RequestParam String nombreEvento, @RequestParam int id) {
 	
 		ResponseEntity<Evento> responseEntityEvento= new RestTemplate().getForEntity("https://localhost:2222/evento/¨{nombre}", Evento.class);
 		ResponseEntity<Usuario> responseEntityUsuario= new RestTemplate().getForEntity("https://localhost:3333/usuario/{id}", Usuario.class);
 		
+		RestTemplate restTemplate = new RestTemplate();
+		
 		if(responseEntityEvento.getStatusCode() == HttpStatus.OK && responseEntityUsuario.getStatusCode() == HttpStatus.OK) {
-			responseEntityEvento.getBody();
-			responseEntityUsuario.getBody();
+			
+			Venta venta = new Venta();
+			venta.setEvento(responseEntityEvento.getBody());
+			venta.setUser(responseEntityUsuario.getBody());
+			restTemplate.postForObject("https://localhost:6666", venta, Venta.class);
 			return true;
 		}
 		return false;
