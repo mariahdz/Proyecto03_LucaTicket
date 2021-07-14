@@ -64,7 +64,7 @@ public class EventoController  {
 
 	@GetMapping(value = "/list/{descripcionCorta}")
 	public ResponseEntity<List<Evento>> encontrarPorGenero(@PathVariable("descripcionCorta") String descripcionCorta) {
-		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR GÉNERO MÚSICA");
+		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTRAR POR GÉNERO MÚSICA");
 		List<Evento> eventos = new ArrayList<Evento>();
 		eventos = service.findByGenero(descripcionCorta);
 		
@@ -93,7 +93,7 @@ public class EventoController  {
 	 */
 	@GetMapping(value = "/eventos/list/{nombre}")
 	public ResponseEntity<List<Evento>> encontrarPorNombre(@PathVariable("nombre") String nombre) {
-		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTAR POR NOMBRE");
+		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTRAR POR NOMBRE");
 		List<Evento> eventos = new ArrayList<Evento>();
 
 		eventos = service.findByName(nombre);
@@ -158,5 +158,22 @@ public class EventoController  {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	
+	@GetMapping(value = "/list/recinto/{recinto}")
+	public ResponseEntity<List<Evento>> encontrarPorCiudad(@PathVariable("recinto") String recinto) {
+		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTRAR POR CIUDAD");
+		List<Evento> eventos = new ArrayList<Evento>();
+		eventos = service.findByCiudad(recinto);
+		
+		if(eventos.isEmpty()) {
+			throw new EventoDescripcionNotFoundException(recinto);
+		}
+		
+		return new ResponseEntity<>(eventos, HttpStatus.OK);
+	}
+
+	
+	
 	
 }

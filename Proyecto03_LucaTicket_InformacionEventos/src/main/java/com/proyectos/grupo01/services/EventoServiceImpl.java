@@ -82,6 +82,15 @@ public class EventoServiceImpl implements EventoService{
 	}
 	
 	
+	public List<Evento> findByCiudad(String recinto) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("recinto").regex(recinto));
+		List<Evento> eventos = mongo.find(query,Evento.class);
+
+		return eventos;
+	}
+
+	
 	@Override
 	public <S extends Evento> List<S> saveAll(Iterable<S> entities) {
 		// TODO Auto-generated method stub
@@ -195,6 +204,7 @@ public class EventoServiceImpl implements EventoService{
 
 
 }
+
 
 
 

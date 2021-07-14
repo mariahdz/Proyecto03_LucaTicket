@@ -1,6 +1,8 @@
 package com.proyectos.grupo01.error;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.http.HttpStatus;
 
@@ -25,5 +27,23 @@ private HttpStatus estado;
 private LocalDateTime fecha = LocalDateTime.now();
 @NonNull
 private String mensaje;
+
+private List<String> errors;
+
+
+public ApiError(HttpStatus status, String message, List<String> errors) {
+    super();
+    this.estado = status;
+    this.mensaje = message;
+    this.errors = errors;
+}
+
+public ApiError(HttpStatus status, String message, String error) {
+    super();
+    this.estado = status;
+    this.mensaje = message;
+    errors = Arrays.asList(error);
+}
+
 
 }
