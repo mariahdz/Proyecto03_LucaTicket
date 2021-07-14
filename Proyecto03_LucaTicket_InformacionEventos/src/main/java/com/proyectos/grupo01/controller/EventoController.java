@@ -74,6 +74,13 @@ public class EventoController  {
 		
 		return new ResponseEntity<>(eventos, HttpStatus.OK);
 	}
+//	
+//	@GetMapping(value="/evento/price/{price}")
+//	public Evento encontrarPorPrecio(@PathVariable("precio") int precio) {
+//		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTRAR POR PRECIO");
+//		Optional<Evento> eventoPrice = service.findOne(null)
+//
+//	}
 
 
 

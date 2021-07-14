@@ -40,12 +40,13 @@ public class VentaController {
 
 	ResponseEntity<Evento> response= restTemplate.getForEntity(url, Evento.class);
 
-	if(response.getStatusCode().equals(HttpStatus.OK)) {
-	String uri = "http://localhost:6666/pasarela";
-	return restTemplate.getForEntity(uri, Boolean.class);
-	}
+		if(response.getStatusCode().equals(HttpStatus.OK)) {
+			String uri = "http://localhost:6666/pasarela";
+			return restTemplate.getForEntity(uri, Boolean.class);
+		}
 	return null;
 	}
 	
 }
+
 

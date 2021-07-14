@@ -101,8 +101,8 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public Optional<Usuario> findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return repo.findById(id);
 	}
 
 	@Override
@@ -119,8 +119,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
-		
+		repo.deleteById(id);
 	}
 
 	@Override
@@ -170,5 +169,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }

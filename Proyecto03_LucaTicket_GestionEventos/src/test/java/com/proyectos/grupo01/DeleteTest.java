@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.proyectos.grupo01.controller.EventoController;
 import com.proyectos.grupo01.model.Evento;
+import com.proyectos.grupo01.service.EventoService;
 
 @SpringBootTest
 public class DeleteTest {
@@ -20,6 +21,9 @@ public class DeleteTest {
 	
 	@MockBean
 	private EventoController control;
+	
+	@MockBean
+	private EventoService service;
 	
 	@Test
 	public void whenDeleteEvento_shouldReturnNoCONTENT() { 
@@ -40,4 +44,15 @@ public class DeleteTest {
      control.eliminarEvento(id);
      assertThat(ResponseEntity.status(HttpStatus.NO_CONTENT));
 	}
+	
+//	@Test
+//	public void whenDeleteEvento_shouldReturnEmpty() {
+//		Evento evento = new Evento();
+//		evento.setId("1");
+//		control.eliminarEvento(id);
+//		controller.deleteJuego(0);
+//		assertThat(repo.findAll().size()).isEqualTo(0);
+//		
+//		
+//	}
 }

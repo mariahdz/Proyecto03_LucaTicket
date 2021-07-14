@@ -25,4 +25,19 @@ public class ComprobarVentaTest {
 		asserThat(venta==true);		
 	}*/
 	
+
+//	@Test
+//	private void asserThat(boolean venta) {
+//		
+//		 Evento evento = new Evento();
+//		 Usuario user = new Usuario();
+//		 int idUsuario = user.getId_usuario();
+//		 String nombre = "nombre";
+//		 venta = control.comprobarVenta(nombre, idUsuario);
+//		
+//		
+//		asserThat(venta==true);		
+//	}
+//	
+
 }

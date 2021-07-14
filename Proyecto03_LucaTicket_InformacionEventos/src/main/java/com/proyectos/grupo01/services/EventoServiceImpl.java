@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.proyectos.grupo01.error.EventoNotFoundException;
 import com.proyectos.grupo01.model.Evento;
 import com.proyectos.grupo01.repository.EventoRepository;
 
@@ -165,7 +165,7 @@ public class EventoServiceImpl implements EventoService{
 
 	@Override
 	public <S extends Evento> Optional<S> findOne(Example<S> example) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -194,15 +194,10 @@ public class EventoServiceImpl implements EventoService{
 	}
 
 
+}
 
 
-	/*@Override
-	public List<Evento> findByNameIgnoreCaseIn(List<String> nombre) {
-		List <Evento> eventos = eventoRepository.findByNameIgnoreCaseIn(nombre);
-		return eventos;
-	}
-*/
+
 
 	
 
-}

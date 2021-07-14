@@ -19,10 +19,6 @@ import lombok.ToString;
 public class Evento implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-
-
-
-	
 	
 	private String id;
 	private String nombre;

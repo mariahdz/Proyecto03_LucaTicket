@@ -13,10 +13,9 @@ import com.proyectos.grupo01.model.Evento;
 @Repository
 public interface EventoRepository extends MongoRepository <Evento, String> {
 
-	 /*   @Query("select user from Eventos e where upper(nombre) in :nombre")
-	    List<Evento> findByNameIgnoreCaseIn(@Param("userNames") List<String> nombre);*/
 	
 		@Query("{precioNormal : {$lt : ?0, $gt : ?1}}")
 		List <Evento> findEventoByPriceRange(int desde, int hasta);
 	    
 }
+
