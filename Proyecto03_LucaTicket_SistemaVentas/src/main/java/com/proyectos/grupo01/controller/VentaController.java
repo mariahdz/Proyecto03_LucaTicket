@@ -51,7 +51,31 @@ public class VentaController {
 			Venta venta = new Venta();
 			venta.setEvento(responseEntityEvento.getBody());
 			venta.setUser(responseEntityUsuario.getBody());
-			restTemplate.postForObject("https://localhost:6666", venta, Venta.class);
+			restTemplate.postForObject("https://localhost:6666/pasarela", venta, Venta.class);
+			return true;
+		}
+		return false;
+		
+	}
+	
+	@PostMapping("/venta/prueba")
+	public boolean comprobarVenta2 (@RequestParam String nombreEvento, @RequestParam int id) {
+		String url2 = "https://localhost:4444/eventos/list/¨{nombre:Dream Beach}";
+		String url1 = "https://localhost:3333/usuario/{id: 1}";
+		String notification2 = "{\"nombre\"}";
+		String notification = "{\"id\"}";
+		
+		ResponseEntity<Evento> responseEntityEvento= new RestTemplate().getForEntity(url1, null,  Usuario.class, notification);
+		ResponseEntity<Usuario> responseEntityUsuario= new RestTemplate().getForEntity( url2, null, Evento.class, notification2);
+		
+		RestTemplate restTemplate = new RestTemplate();
+		
+		if(responseEntityEvento.getStatusCode() == HttpStatus.OK && responseEntityUsuario.getStatusCode() == HttpStatus.OK) {
+			
+			Venta venta = new Venta();
+			venta.setEvento(responseEntityEvento.getBody());
+			venta.setUser(responseEntityUsuario.getBody());
+			restTemplate.postForObject("https://localhost:6666/pasarela", venta, Venta.class);
 			return true;
 		}
 		return false;
