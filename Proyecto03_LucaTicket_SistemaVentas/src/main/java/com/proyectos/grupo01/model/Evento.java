@@ -4,9 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +11,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 
-@Document(collection = "Eventos")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -28,7 +24,7 @@ public class Evento implements Serializable{
 
 
 	
-	@Id
+	
 	private String id;
 	private String nombre;
 	private String descripcionCorta;
