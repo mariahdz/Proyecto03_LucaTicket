@@ -47,7 +47,7 @@ public class EventoController  {
 	 * @author Desiree 
 	 * @version 12/07/2021
 	 */
-	@GetMapping(value = "/{id}")
+	@GetMapping(value = "/evento/{id}")
 	public Evento encontrarPorId(@PathVariable("id") String id) {
 		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTRAR POR ID");
 		Optional<Evento> eventoId = service.findById(id);
@@ -99,6 +99,28 @@ public class EventoController  {
 	}
 	
 
+	/**
+	 * Metodo para listar los eventos por un rango de precios determinado <br>
+	 * @param desde
+	 * @param hasta
+	 * @return lista de eventos
+	 * @author María Hernández
+	 */
+	
+	@GetMapping(value = "/rango/precio/{desde}/{hasta}")
+	public ResponseEntity<List<Evento>> listaRangoPrecios(@PathVariable int desde, @PathVariable int hasta) {
+		log.info("---- Se ha invocado el microservicio INFORMACIÓN_EVENTOS/ENCONTRAR EVENTOS POR RANGO DE PRECIOS");
+		List<Evento> eventos = new ArrayList<Evento>();
+
+		eventos = service.findEventoByPriceRange(desde, hasta);
+		
+		/*if(eventos.isEmpty()) {
+			throw new EventoNombreNotFoundException(hasta);
+		}*/
+
+		return new ResponseEntity<>(eventos, HttpStatus.OK);
+	}
+	
 	/**
 	 * Metodo para listar todos los eventos de la colección
 	 * @param

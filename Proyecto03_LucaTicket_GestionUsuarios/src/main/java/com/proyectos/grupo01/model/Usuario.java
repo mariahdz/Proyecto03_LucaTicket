@@ -1,5 +1,6 @@
 package com.proyectos.grupo01.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 
@@ -31,7 +32,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name="usuarios")
-public class Usuario {
+public class Usuario implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -1,4 +1,4 @@
-package com.proyectos.grupo01.security;
+/*package com.proyectos.grupo01.security;
 
 
 import java.io.IOException;
@@ -61,3 +61,4 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		response.addHeader(HEADER_AUTHORIZACION_KEY, TOKEN_BEARER_PREFIX + " " + token);
 	}
 }
+*/

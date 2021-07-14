@@ -18,7 +18,7 @@
 		<spring-cloud.version>Hoxton.SR11</spring-cloud.version>
 	</properties>
 	<dependencies>
-	
+
 
 	
 	<!-- swagger -->

@@ -1,19 +1,19 @@
 package com.proyectos.grupo01.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-
+import lombok.Setter;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class User {
+@Getter
+@Setter
+@ToString
+public class Venta {
 	
-	private String user;
-	private String pwd;
-	//private String token;
-	
+	Evento evento;
+	//Usuario user;
 
 }

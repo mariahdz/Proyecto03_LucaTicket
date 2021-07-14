@@ -63,6 +63,13 @@ public class EventoServiceImpl implements EventoService{
 		return eventos;
 		}
 	
+	public List<Evento> findEventoByPriceRange(int desde, int hasta) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("precioNormal").lt(hasta).gt(desde));
+		
+		List<Evento> eventos = mongo.find(query, Evento.class);
+		return eventos;
+	}
 	
 	public Optional<Evento> findById(String id) {
 		return eventoRepository.findById(id);
@@ -187,12 +194,14 @@ public class EventoServiceImpl implements EventoService{
 	}
 
 
-	@Override
+
+
+	/*@Override
 	public List<Evento> findByNameIgnoreCaseIn(List<String> nombre) {
 		List <Evento> eventos = eventoRepository.findByNameIgnoreCaseIn(nombre);
 		return eventos;
 	}
-
+*/
 
 	
 
