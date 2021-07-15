@@ -86,19 +86,6 @@ public class UsuarioController {
 			
 		}	
 			
-			
-//			
-////					repo.findById(id).map(usuarioEdit -> {
-////				
-////				usuarioEdit.setNombre(usuario.getNombre());
-////				usuarioEdit.setApellido(usuario.getApellido());
-////				usuarioEdit.setFecha_alta(usuario.getFecha_alta());
-////				usuarioEdit.setMail(usuario.getMail());
-////				usuarioEdit.setUser_name(usuario.getUser_name());
-////				
-////				return ResponseEntity.ok(service.save(usuarioEdit));
-////				
-			
 		
 		 /**
 	     * Método para dar de baja un usuario según su Id

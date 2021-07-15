@@ -32,7 +32,8 @@ class EditTest {
 	public void whenEditUsuaro_shouldReturnUsuarioModified() {
 	Usuario usuario = new Usuario();
 	when(control.editarUsuario(usuario, 1).getHeaders());
-	control.editarUsuario(usuario, 1);
+	int id = 1;
+	control.editarUsuario(usuario, id);
 	assertThat(ResponseEntity.status(HttpStatus.OK));
 	}
 
