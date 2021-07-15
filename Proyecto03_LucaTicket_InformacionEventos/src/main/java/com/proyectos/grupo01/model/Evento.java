@@ -1,9 +1,9 @@
 package com.proyectos.grupo01.model;
 
-import java.awt.Image;
+
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalTime;
+
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -14,6 +14,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+/*
+ * Clase Evento
+ * @autor Desiree
+ * @version 09/07/2021/A
+ */
 
 
 
@@ -32,7 +38,6 @@ public class Evento implements Serializable{
 	@Id
 	private String id;
 	private String nombre;
-	//private String genero;
 	private String descripcionCorta;
 	private String descripcionExt;
 	private LocalDate fechaInicio;

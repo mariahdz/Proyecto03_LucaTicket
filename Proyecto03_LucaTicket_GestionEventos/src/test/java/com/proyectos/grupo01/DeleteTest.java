@@ -1,6 +1,12 @@
 package com.proyectos.grupo01;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.nio.charset.Charset;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -8,24 +14,45 @@ import java.util.List;
 
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Test;
+
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import org.junit.jupiter.api.extension.ExtendWith;
+
+
+
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.web.servlet.MockMvc;
+
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.proyectos.grupo01.controller.EventoController;
 import com.proyectos.grupo01.model.Evento;
+import com.proyectos.grupo01.repository.EventoRepository;
 import com.proyectos.grupo01.service.EventoService;
 
+
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class DeleteTest {
-	
+
 	@InjectMocks
 	EventoController control;
+
+	@Mock
+	MockMvc mockMvc;
+	
+
 	
 	@Mock
 	EventoService service;
@@ -34,6 +61,16 @@ public class DeleteTest {
 	public void init() {
 		MockitoAnnotations.initMocks(control);
 	}
+
+	
+
+   
+
+    @MockBean
+    private EventoRepository repo;
+	
+	
+
 
 	
 	@Test
@@ -59,15 +96,7 @@ public class DeleteTest {
 		assertThat(service.findAll()).isEmpty();
 	
 	}
-	
-//	@Test
-//	public void whenDeleteEvento_shouldReturnEmpty() {
-//		Evento evento = new Evento();
-//		evento.setId("1");
-//		control.eliminarEvento(id);
-//		controller.deleteJuego(0);
-//		assertThat(repo.findAll().size()).isEqualTo(0);
-//		
-//		
-//	}
+
+
+	   
 }
