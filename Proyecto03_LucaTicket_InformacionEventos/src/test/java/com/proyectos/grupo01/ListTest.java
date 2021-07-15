@@ -29,7 +29,7 @@ class ListTest {
 	
 	@MockBean
 	EventoService service;
-	
+
 	
 	/*
 	 * Prueba el método FindAll si a lista está vacía
@@ -84,6 +84,29 @@ class ListTest {
 		Evento evento = new Evento();
 		when(service.findByName("Resurrection")).thenReturn(Collections.singletonList(evento));
 		assertThat(service.findByName("Resurrection").size()).isEqualTo(1);
+	}
+	
+	
+	/*
+	 * Prueba el método findEventoByPriceRange
+	 */
+	@Test
+	void testFindByPrice() {
+		Evento evento = new Evento();
+		when(service.findEventoByPriceRange(50, 100)).thenReturn(Collections.singletonList(evento));
+		assertThat(service.findEventoByPriceRange(50, 100).size()).isEqualTo(1);
+	}
+	
+	
+	
+	/*
+	 * Prueba el método findByCiudad
+	 */
+	@Test
+	void testFindByCity() {
+		Evento evento = new Evento();
+		when(service.findByCiudad("Málaga")).thenReturn(Collections.singletonList(evento));
+		assertThat(service.findByCiudad("Málaga")).size().isEqualTo(1);
 	}
 	
 }
