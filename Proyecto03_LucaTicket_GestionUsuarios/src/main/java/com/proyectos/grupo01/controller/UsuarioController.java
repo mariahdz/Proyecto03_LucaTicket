@@ -50,8 +50,9 @@ public class UsuarioController {
 		public ResponseEntity <Usuario> addUsuario (@RequestBody Usuario usuarioRequest) {
 			log.info("---- Se ha invocado el microservicio GESTIÓN_USUARIOS/ADD USUARIO");
 			log.infof("Request: ",usuarioRequest);
-			
+
 			Usuario usuario = repo.save(usuarioRequest);
+
 			return new ResponseEntity <> (usuario, HttpStatus.CREATED);
 		}
 		

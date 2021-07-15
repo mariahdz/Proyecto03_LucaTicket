@@ -25,4 +25,6 @@ public class EditTest {
 	control.editarEvento(evento, id);
 	assertThat(ResponseEntity.status(HttpStatus.OK));
 	}
+	
+	
 }

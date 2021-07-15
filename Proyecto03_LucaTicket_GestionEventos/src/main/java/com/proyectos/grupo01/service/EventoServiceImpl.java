@@ -53,6 +53,10 @@ public class EventoServiceImpl implements EventoService {
 	public void updateEvento(Evento evento) {
 		eventoRepository.save(evento);
 	}
+	
+	public Evento addEvento(Evento evento) {
+		return eventoRepository.save(evento);
+	}
 
 	@Override
 	public <S extends Evento> List<S> saveAll(Iterable<S> entities) {
@@ -96,10 +100,8 @@ public class EventoServiceImpl implements EventoService {
 		return null;
 	}
 
-	@Override
-	public <S extends Evento> S save(S entity) {
-		return eventoRepository.save(entity);
-	}
+	
+	
 
 	@Override
 	public Iterable<Evento> findAllById(Iterable<String> ids) {
@@ -153,6 +155,12 @@ public class EventoServiceImpl implements EventoService {
 	public <S extends Evento> boolean exists(Example<S> example) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public <S extends Evento> S save(S entity) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

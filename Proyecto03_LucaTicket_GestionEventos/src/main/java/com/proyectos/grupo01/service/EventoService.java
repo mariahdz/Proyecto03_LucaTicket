@@ -18,4 +18,5 @@ public interface EventoService extends EventoRepository {
 	public boolean existsById(String id);
 	public void deleteById(String id);
 	void updateEvento(Evento evento);
+	public Evento addEvento(Evento evento);
 }

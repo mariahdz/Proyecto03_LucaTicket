@@ -45,7 +45,7 @@ public class EventoController {
 	public ResponseEntity<Evento> addEvento(@RequestBody Evento eventoRequest) {
 		log.info("---- Se ha invocado el microservicio GESTIÓN_EVENTOS/ADD EVENTO");
 
-		Evento evento = service.save(eventoRequest);
+		Evento evento = service.addEvento(eventoRequest);
 		return new ResponseEntity<>(evento, HttpStatus.CREATED);
 	}
 
