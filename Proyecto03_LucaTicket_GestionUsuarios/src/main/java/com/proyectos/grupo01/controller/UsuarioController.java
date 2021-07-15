@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -22,19 +23,21 @@ import com.proyectos.grupo01.error.UsuarioNotFoundException;
 //import com.proyectos.grupo01.error.EventoNotFoundException;
 //import com.proyectos.grupo01.model.Evento;
 import com.proyectos.grupo01.model.Usuario;
-import com.proyectos.grupo01.service.UsuarioServiceImpl;
+import com.proyectos.grupo01.repository.UsuarioRepository;
+
 /**
  * Usuario Controller <br>
  * @author Desiree
  * @version 09/07/2021/A
  */
 @RestController
+@RequestMapping("/")
 public class UsuarioController {
 	
 	private static final Logger log = Logger.getLogger("UsuarioRepository.class");
 	
 	@Autowired
-	UsuarioServiceImpl service;
+	UsuarioRepository repo;
 	
 	
 	/**
@@ -43,12 +46,12 @@ public class UsuarioController {
 	 * @return creado
 	 * 
 	 */
-		@PostMapping("/save")
+		@PostMapping("/usuario/save")
 		public ResponseEntity <Usuario> addUsuario (@RequestBody Usuario usuarioRequest) {
 			log.info("---- Se ha invocado el microservicio GESTIÓN_USUARIOS/ADD USUARIO");
 			log.infof("Request: ",usuarioRequest);
 			
-			Usuario usuario = service.save(usuarioRequest);
+			Usuario usuario = repo.save(usuarioRequest);
 			return new ResponseEntity <> (usuario, HttpStatus.CREATED);
 		}
 		
@@ -64,21 +67,38 @@ public class UsuarioController {
 			log.info("---- Se ha invocado el microservicio GESTIÓN_USUARIOS/EDITAR");
 			log.info("----Editando usuario con ID = " + id);
 			
-			return service.findById(id).map(usuarioEdit -> {
+			if(!repo.existsById(id)) {
+				throw new UsuarioNotFoundException(id);
 				
-				usuarioEdit.setNombre(usuario.getNombre());
-				usuarioEdit.setApellido(usuario.getApellido());
-				usuarioEdit.setFecha_alta(usuario.getFecha_alta());
-				usuarioEdit.setMail(usuario.getMail());
-				usuarioEdit.setUser_name(usuario.getUser_name());
+			}else {
 				
-				return ResponseEntity.ok(service.save(usuarioEdit));
+				usuario.setNombre(usuario.getNombre());
+				usuario.setApellido(usuario.getApellido());
+				usuario.setMail(usuario.getMail());
+				usuario.setUser_name(usuario.getUser_name());
+				usuario.setPassword(usuario.getPassword());
+				usuario.setFecha_alta(usuario.getFecha_alta());
+				usuario.setToken(usuario.getToken());
 				
-			}).orElseGet(() ->{
-				return ResponseEntity.notFound().build();
-			});
-		
-		}
+				return ResponseEntity.ok(repo.save(usuario));
+				
+			}
+			
+		}	
+			
+			
+//			
+////					repo.findById(id).map(usuarioEdit -> {
+////				
+////				usuarioEdit.setNombre(usuario.getNombre());
+////				usuarioEdit.setApellido(usuario.getApellido());
+////				usuarioEdit.setFecha_alta(usuario.getFecha_alta());
+////				usuarioEdit.setMail(usuario.getMail());
+////				usuarioEdit.setUser_name(usuario.getUser_name());
+////				
+////				return ResponseEntity.ok(service.save(usuarioEdit));
+////				
+			
 		
 		 /**
 	     * Método para dar de baja un usuario según su Id
@@ -90,7 +110,7 @@ public class UsuarioController {
 			log.info("---- Se ha invocado el microservicio GESTIÓN_USUARIOS/BORRAR POR ID");
 			log.info("----El evento con ID = " + id);
 			int i; //para encontrar usuarios
-			service.deleteById(id);
+			repo.deleteById(id);
 			return ResponseEntity.noContent().build();
 		}
 			
@@ -106,7 +126,7 @@ public class UsuarioController {
 		@GetMapping(value = "/usuario/{id}")
 		public Usuario encontrarPorId(@PathVariable("id") int id) {
 			log.info("---- Se ha invocado el microservicio GESTIÓN_USUARIOS/ENCONTRAR POR ID");
-			Optional<Usuario> usuarioId = service.findById(id);
+			Optional<Usuario> usuarioId = repo.findById(id);
 			return usuarioId.orElseThrow(() -> new UsuarioNotFoundException(id));
 		}
 
