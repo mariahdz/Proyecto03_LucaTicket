@@ -26,7 +26,7 @@ public class Evento implements Serializable{
 	private String descripcionExt;
 	private LocalDate fechaInicio;
 	private LocalDate fechaFin;
-	private LocalDate hora;
+	private String hora;
 	private int precioPreventa;
 	private int precioNormal;
 	private List recinto;

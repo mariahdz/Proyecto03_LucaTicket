@@ -31,16 +31,18 @@ public class VentaController {
 	private static final Logger log = Logger.getLogger("VentaRepositoryImpl.class");
 	
 	
-	@GetMapping("/venta/{id}")
-	public ResponseEntity<Boolean> comprobarVenta (@PathVariable String id) throws IOException {
+	@GetMapping("/venta/{id}/{idUsuario}")
+	public ResponseEntity<Boolean> comprobarVenta (@PathVariable String id, @PathVariable int idUsuario) throws IOException {
 
-	log.info("---Se ha invocado el método comprobarVenta8");
+	log.info("---Se ha invocado el método comprobarVenta");
 
 	String url = "http://localhost:4444/evento/" + id;
+	String url2 = "http://localhost:3333/usuario/" + idUsuario;
 
 	ResponseEntity<Evento> response= restTemplate.getForEntity(url, Evento.class);
+	ResponseEntity<Usuario> response2= restTemplate.getForEntity(url2, Usuario.class);
 
-		if(response.getStatusCode().equals(HttpStatus.OK)) {
+		if(response.getStatusCode().equals(HttpStatus.OK) && response2.getStatusCode().equals(HttpStatus.OK)) {
 			String uri = "http://localhost:6666/pasarela";
 			return restTemplate.getForEntity(uri, Boolean.class);
 		}

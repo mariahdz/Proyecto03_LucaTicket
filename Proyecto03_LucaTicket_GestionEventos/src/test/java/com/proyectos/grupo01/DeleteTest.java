@@ -30,16 +30,11 @@ public class DeleteTest {
 	@Mock
 	EventoService service;
 	
-	@MockBean
-	private RestTemplate restTemplate;
-	
 	@Before(value = "/")
 	public void init() {
 		MockitoAnnotations.initMocks(control);
 	}
-	
-	@MockBean
-	private EventoService service;
+
 	
 	@Test
 	public void whenDeleteEvento_shouldReturnNoCONTENT() { 
@@ -55,7 +50,7 @@ public class DeleteTest {
 	public void whenDeleteEvento_shouldReturnEmptyLIST() { 
 		List <Evento> list = new ArrayList();
 		
-		Evento evento = new Evento("212df5d5","Dream Beach", "Festival de musica", " ", LocalDate.now(),LocalDate.now(),LocalDate.now(),
+		Evento evento = new Evento("212df5d5","Dream Beach", "Festival de musica", " ", LocalDate.now(),LocalDate.now()," ",
 				50, 100, list ," ", " ");
 		
 		service.addEvento(evento);

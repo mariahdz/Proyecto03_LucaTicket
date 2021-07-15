@@ -42,7 +42,6 @@ public class Usuario implements Serializable {
 	private String apellido;
 	private String mail;
 	private String password;
-	private String token;
 	private LocalDate fecha_alta;
 
 }
